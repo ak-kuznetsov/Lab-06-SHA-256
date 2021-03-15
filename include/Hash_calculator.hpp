@@ -83,7 +83,7 @@ class Hash_calculator {
     }
     output_file << out_json.dump(4);
     output_file.close();
-  };
+  }
 
   void Start(const bool& key);
 
