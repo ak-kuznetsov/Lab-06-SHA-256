@@ -52,7 +52,7 @@ class Hash_calculator {
  private:
   std::mutex Mutex;
   unsigned int Number_of_threads;
-  long Duration;
+  int64_t Duration;
   std::string Random_string;
   std::string Hash_string;
   std::vector<std::thread> Threads;
@@ -92,4 +92,4 @@ class Hash_calculator {
   void Do_hashing(const bool& key);
 };
 
-#endif  // INCLUDE_HASH_CALCULATOR_HPP
+#endif  // INCLUDE_HASH_CALCULATOR_HPP_
