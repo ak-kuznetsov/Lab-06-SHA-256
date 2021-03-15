@@ -46,7 +46,7 @@ using namespace logging::trivial;
 namespace attributes = boost::log::attributes;
 namespace expressions = boost::log::expressions;
 
-static const std::string End = "0000";
+static const char End[] = "0000";
 
 class Hash_calculator {
  private:
@@ -64,14 +64,14 @@ class Hash_calculator {
 
   ~Hash_calculator();
 
-  void static Signal_catch(int signal) {
+  static void Signal_catch(int signal) {
     Write_to_json_file("map.json");
     sleep(1);
     std::cout << "\nProgram aborted with code " << --signal << "\n";
     exit(signal);
   }
 
-  void static Write_to_json_file(const std::string& file_name) {
+  static void Write_to_json_file(const std::string& file_name) {
     std::ofstream output_file;
     std::ifstream input_file;
     output_file.open(file_name);
