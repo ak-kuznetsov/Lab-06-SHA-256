@@ -7,3 +7,4 @@ int main(int argc, char* argv[]) {
   Hash_calculator hash(argc, argv);
   hash.Start(true);
 }
+

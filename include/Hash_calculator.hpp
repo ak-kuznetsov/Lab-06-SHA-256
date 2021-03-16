@@ -42,11 +42,11 @@ namespace logging = boost::log;
 namespace sources = boost::log::sources;
 namespace sinks = boost::log::sinks;
 namespace keywords = boost::log::keywords;
-using namespace logging::trivial;
 namespace attributes = boost::log::attributes;
 namespace expressions = boost::log::expressions;
 
 static const char End[] = "0000";
+const int Mb {10 * 1024 * 1024};
 
 class Hash_calculator {
  private:
@@ -57,7 +57,7 @@ class Hash_calculator {
   std::string Hash_string;
   std::vector<std::thread> Threads;
   static std::vector<nlohmann::json> Right_hashs;
-  sources::severity_logger<severity_level> level;
+  sources::severity_logger<boost::log::trivial::severity_level> level;
 
  public:
   Hash_calculator(int argc, char* argv[]);

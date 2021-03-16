@@ -17,7 +17,7 @@ void Hash_calculator::Start(const bool& key) {
       std::clog, keywords::format = "[%Severity%] %TimeStamp%: %Message%");
 
   logging::add_file_log(keywords::file_name = "sample_%N.log",
-                    keywords::rotation_size = 10 * 1024 * 1024,
+                    keywords::rotation_size = Mb,
                     keywords::time_based_rotation =
                         sinks::file::rotation_at_time_point(0, 0, 0),
                     keywords::format = "[%Severity%][%TimeStamp%]: %Message%");
@@ -43,7 +43,7 @@ void Hash_calculator::Do_hashing(const bool& key) {
 
 void Hash_calculator::Sort_hash(std::string& hash) {
   if (Hash_string.substr(60, 4) == End) {
-    BOOST_LOG_SEV(level, info)
+    BOOST_LOG_SEV(level, boost::log::trivial::severity_level::info)
         << std::endl
         << "sourse: " << std::hex << std::stol(Random_string) << std::dec
         << " hash: " << hash << " duration: " << Duration
@@ -53,7 +53,7 @@ void Hash_calculator::Sort_hash(std::string& hash) {
                         {"duration", Duration}};
     Right_hashs.push_back(j);
   } else {
-    BOOST_LOG_SEV(level, trace)
+    BOOST_LOG_SEV(level, boost::log::trivial::severity_level::trace)
         << std::endl
         << "sourse: " << std::hex << std::stol(Random_string) << std::dec
         << " hash: " << Hash_string
